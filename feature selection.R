@@ -2,16 +2,15 @@
 
 # Data loading 
 
-train<-read.csv('training1114.csv')
+train<-read.csv('training.csv')
 y<-read.csv('y.csv') # Y chromosome proteins
 
 
 # Here we load libraries for data wrangling and visualisation.
 library(tidyverse)
-library(caret)
 library(limma)
 library(ggalluvial)
-library(randomForest)
+
 
 
 # peak at the dataset
@@ -45,6 +44,7 @@ msi_list<-cbind(rownames(msi_list),msi_list)
 msi_list<-arrange(msi_list,(p.value))
 msi_toplist<-as.character(msi_list[1:20,1]) # top20 with lowest p value
 
+rm(msi_lm); invisible(gc())
 ##### Check Protein Expression #####
 
 # organize table
